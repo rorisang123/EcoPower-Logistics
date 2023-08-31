@@ -31,3 +31,8 @@ Navigate to the GET section that accepts values. Insert the id of the item you'd
 
 ## PUT
 To update a record, insert it's id and similarr to the POST section, plug in the new data in JSON format and click "Try it out!" to update it.
+
+# References
+Microsoft. 2022. Using Web API 2 with Entity Framework 6. https://learn.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-1 Date of access: 27 Aug. 2023.
+
+Henrique Siebert Domareski. 2021. Deploying a .NET 5 Web API and a SQL Database in Azure. https://henriquesd.medium.com/deploying-a-net-5-web-api-and-a-sql-database-in-azure-24e5cae7d6fe Date of access: 27 Aug. 2023.
