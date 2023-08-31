@@ -5,6 +5,7 @@ Security is managed in the backend by allowing only certain endpoint to access t
 **Note to markers:**
 *The first half of this project's version history is located under the CMPG323---overview repo as I misunderstood the instructions.*
 
+<img width="780px" src="screenshot.JPG" alt="screenshot" />
 
 This is a bare-bones example of a .NET MVC application providing a REST
 API using Swagger UI in the frontend.
