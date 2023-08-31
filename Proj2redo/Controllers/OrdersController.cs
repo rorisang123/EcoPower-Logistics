@@ -37,6 +37,17 @@ namespace Proj2redo.Controllers
             return Ok(order);
         }
 
+
+        // Custom method
+        private bool isOrder(int id, Order order)
+        {
+            if (id != order.OrderId)
+            {
+                return false;
+            }
+            return true;
+        }
+
         // PUT: api/Orders/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutOrder(int id, Order order)
@@ -93,6 +104,12 @@ namespace Proj2redo.Controllers
         {
             Order order = await db.Orders.FindAsync(id);
             if (order == null)
+            {
+                return NotFound();
+            }
+
+            // Implementing custom method for delete to check if order exists before deleting
+            if (!isOrder(id, order))
             {
                 return NotFound();
             }

@@ -37,6 +37,16 @@ namespace Proj2redo.Controllers
             return Ok(product);
         }
 
+        // Custom method
+        private bool isProduct(int id, Product product)
+        {
+            if (id != product.ProductId)
+            {
+                return false;
+            }
+            return true;
+        }
+
         // PUT: api/Products/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutProduct(int id, Product product)
@@ -46,7 +56,8 @@ namespace Proj2redo.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != product.ProductId)
+            // implementing custom method
+            if (!isProduct(id, product))
             {
                 return BadRequest();
             }
@@ -93,6 +104,12 @@ namespace Proj2redo.Controllers
         {
             Product product = await db.Products.FindAsync(id);
             if (product == null)
+            {
+                return NotFound();
+            }
+
+            // Implementing custom method for delete to check if product exists before deleting
+            if (!isProduct(id, product))
             {
                 return NotFound();
             }

@@ -37,7 +37,39 @@ namespace Proj2redo.Controllers
                 return NotFound();
             }
 
+
+
             return Ok(customer);
+        }
+        // Get orders that belong to a customer
+        /*
+        [ResponseType(typeof(List<Order>))]
+        public async Task<IHttpActionResult> GetCustomerOrders(int id)
+        {
+            Customer customer = await db.Customers.FindAsync(id);
+            List<Order> allOrders = db.Orders.ToList();
+            List<Order> customerOrders = [new Order()];
+
+            for (int i = 0; i < allOrders.Count; i++)
+            {
+                if (allOrders.FindIndex(i).customerId == id)
+                {
+                    customerOrders.Add(allOrders[i]);
+                }
+            }           
+
+            return OK(customerOrders);
+        }
+        */
+
+        // Custom method
+        private bool isCustomer(int id, Customer customer)
+        {
+            if (id != customer.CustomerId)
+            {
+                return false;
+            }
+            return true;
         }
 
         // PUT: api/Customers/5
@@ -49,7 +81,8 @@ namespace Proj2redo.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != customer.CustomerId)
+            // implementing custom method
+            if(!isCustomer(id, customer))
             {
                 return BadRequest();
             }
@@ -96,6 +129,12 @@ namespace Proj2redo.Controllers
         {
             Customer customer = await db.Customers.FindAsync(id);
             if (customer == null)
+            {
+                return NotFound();
+            }
+
+            // Implementing custom method for delete to check if customer exists before deleting
+            if(!isCustomer(id, customer))
             {
                 return NotFound();
             }
