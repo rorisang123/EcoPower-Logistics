@@ -1,4 +1,4 @@
-# CMPG323-Project-2
+# EcoPower Logistics
 Connection string is missing the password. To run the code from your machine, replace the "PASSWORD-HERE" with the password given.
 Security is managed in the backend by allowing only certain endpoint to access the API.
 
